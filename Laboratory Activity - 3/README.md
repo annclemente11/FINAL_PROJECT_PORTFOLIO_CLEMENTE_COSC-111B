@@ -1,50 +1,67 @@
-🔥 Laboratory Activity 3: Fire Sensor Simulation Using Arduino
+### Laboratory Activity No. 3  
+*Title:* Working with Sensors  
 
-🧠 Overview
-Laboratory Activity 3 presents a simulated fire detection system using the Arduino Uno and basic environmental sensors. By combining a thermistor for temperature monitoring and a photoresistor for light detection, the system evaluates surrounding conditions in real time.
+***
 
-When sensor readings exceed predefined safety thresholds, the Arduino triggers a visual alert, demonstrating how embedded systems can make decisions based on multiple inputs—a core concept in IoT-based safety and monitoring applications.
+#### I. Description  
+This laboratory activity introduces the use of *sensor components* commonly utilized in *IoT (Internet of Things)* applications. It demonstrates how multiple sensors can be integrated into a single *Arduino-based circuit* to monitor environmental conditions. Specifically, the activity implements a simple *fire detection system* using a *thermistor* for temperature sensing and a *photoresistor (LDR)* for light intensity measurement. By combining data from these two sensors, the system illustrates how *real-world analog signals* can be processed and used by the Arduino to activate hardware-based alert mechanisms.  
 
-🎯 Objectives
-- Gain familiarity with basic sensor components used in IoT systems
-- Integrate multiple sensors in an Arduino circuit
-- Implement threshold-based decision logic for fire detection
+***
 
-🧰 Hardware Used
-- Arduino Uno
-- Thermistor
-- Photoresistor
-- Red LED
-- Resistors
-- Breadboard and jumper wires
+#### II. Objectives  
+1. To familiarize students with basic sensor components used in IoT systems.  
+2. To integrate multiple sensor components within an Arduino circuit.  
+3. To design and implement a simple fire detection system.  
 
-🔌 Pin Configuration
+***
 
- Component and Arduino Pin
-🌡️ Thermistor	Analog Pin A0
-💡 Photoresistor	Analog Pin A2
-🚨 Alert LED	Digital Pin 12
+#### III. Concepts Applied  
+- *Analog Sensor Data Acquisition:* Reading real-world environmental parameters through Arduino’s analog input pins.  
+- *Thermistor Temperature Measurement:* Calculated using the *Beta parameter equation* to estimate real-time temperature.  
+- *Light Intensity Sensing:* Utilized through a *photoresistor (LDR)* that detects variations in light levels.  
+- *Threshold-Based Logic:* Decision-making process based on predefined threshold values for temperature and light intensity.  
+- *Function Modularization:* Separating sensor-reading logic into functions for organized and readable code.  
+- **Use of #define and const:** For defining pin assignments and maintaining fixed threshold constants.  
+- *Digital Output Control:* Activating alert mechanisms such as LEDs based on conditional evaluations.  
 
-⚙️ Implementation Details
-The system operates by continuously sampling environmental data and responding when conditions indicate a potential fire.
+***
 
-🔄 Sensor Monitoring
-- Temperature data is read from the thermistor
-- Light intensity is measured using the photoresistor
-- Sensor values are continuously evaluated during program execution
+#### IV. System Behavior  
+- *Sensors Used:*  
+  - *Thermistor:* Connected to *Analog Pin A0* for temperature sensing (°C).  
+  - *Photoresistor (LDR):* Connected to *Analog Pin A2* for measuring ambient light intensity.  
 
-📐 Data Processing
-Temperature is calculated in degrees Celsius based on the thermistor’s resistance
+- *Program Logic:*  
+  - Each sensor reading is processed using dedicated functions for modular program design.  
+  - The system continuously monitors both temperature and light levels.  
+  - When *both temperature and light intensity exceed their predefined thresholds*, a *fire condition* is detected.  
 
-Light intensity readings are compared against a predefined threshold to detect abnormal brightness
+- *Alert Mechanism:*  
+  - An *LED connected to Digital Pin 12* blinks rapidly to indicate a potential fire event.  
+  - This setup demonstrates how multiple sensor inputs can work in combination to generate real-time system responses.  
 
-🚨 Alert Logic
-- If temperature ≥ 50 °C and light intensity ≥ 220:
-- A red LED blinks rapidly to signal a potential fire condition
-- A buzzer is connected in parallel with the alert LED
-- It activates simultaneously without requiring additional control logic
+***
 
-🧩 Code Structure
-- Temperature calculations are encapsulated in a separate function
-- Improves readability
-- Enhances modularity and code organization
+#### V. Circuit Diagram and Wiring  
+*Components:*  
+- Arduino Uno  
+- Thermistor (Temperature Sensor)  
+- Photoresistor (LDR)  
+- 1 LED Indicator  
+- 220Ω resistor (for LED)  
+- Breadboard and connecting wires  
+
+*Connection Setup:*  
+| Component | Arduino Pin | Description |
+|------------|--------------|--------------|
+| Thermistor | A0 | Measures temperature in °C |
+| Photoresistor (LDR) | A2 | Measures ambient light intensity |
+| LED Indicator | D12 | Alerts using rapid blinking pattern |
+| GND | — | Common ground for all components |
+| Power Source | USB / 5V | Powers the entire circuit |
+
+*Design Notes:*  
+- The circuit supports *modular testing*, allowing independent validation of each sensor.  
+- All sensor readings can be observed via the Serial Monitor for calibration and debugging.  
+
+***
