@@ -1,64 +1,112 @@
-💡 COSC 111B – MIDTERM EXAMINATION
+### Midterm Laboratory Exam  
+*Title:* Smart Lighting System Using Arduino  
 
-🧠 Overview
+***
 
-This project implements a Smart Lighting System using an Arduino Uno, designed to automatically and manually adjust lighting indicators based on ambient light intensity measured through a photoresistor (LDR).
+#### I. Description  
+This laboratory examination involves the development of a *smart lighting system* using an *Arduino Uno* that adapts to changing ambient light conditions. The system employs a *photoresistor (LDR)* to detect light intensity and utilizes *three LEDs* (green, yellow, and red) to represent *low*, *medium*, and *high* brightness levels. It operates in two modes — *manual* and *automatic* — enabling flexible control for simulated environmental conditions such as cloudy, normal daylight, or bright sunlight.  
 
-The system operates in two modes:
+Through this experiment, students gain practical experience in *sensor data processing*, *threshold-based control*, and *serial communication*, emphasizing the importance of responsive and context-aware system design in IoT applications.  
 
-🤖 Automatic Mode
+***
 
-- Simulates real-world environmental lighting conditions—Cloudy, Normal, and Bright Sunlight—and activates the appropriate LED automatically based on predefined thresholds.
+#### II. Objectives  
+1. To read analog sensor data using a photoresistor (LDR).  
+2. To implement LED indicators representing varying levels of light intensity.  
+3. To switch between *manual* and *automatic* operation modes.  
+4. To adjust light thresholds dynamically or manually via user commands.  
+5. To display system readings and status updates using the Serial Monitor.  
 
-🧑‍💻 Manual Mode
-- Allows the user to interactively configure light thresholds and control system behavior using Serial Monitor commands.
+***
 
-Three LEDs serve as visual indicators of light intensity:
-🟢 Green → Low light
-🟡 Yellow → Medium light
-🔴 Red → High light
+#### III. Concepts Applied  
+- *Analog Input Processing:* Reading sensor data through analogRead().  
+- *Signal Mapping:* Scaling analog values to percentage representation using the map() function.  
+- *Threshold-Based Control:* Activating LEDs based on defined or computed light level boundaries.  
+- *Serial Communication:* Exchanging user commands and system feedback via Serial.print() and Serial Monitor.  
+- *Command Parsing:* Using string functions such as startsWith() and substring() for structured command interpretation.  
+- *Automatic Mode Logic:* Dynamically setting environmental thresholds based on pre-defined lighting profiles.  
+- *Modular Programming Design:* Organizing functions for readability, maintainability, and logical flow.  
 
-📌 At any given time, only one LED is active, ensuring clear and unambiguous system feedback.
+***
 
-🎯 Objectives
-- Understand Arduino analog input and digital output.
-- Implement sensor-based decision logic using thresholds.
-- Learn Serial communication for interactive control.
-- Simulate environmental conditions and automatic response.
+#### IV. System Behavior  
 
-🧰 Hardware Used
-- Arduino Uno
-- 1 × Photoresistor (LDR)
-- 3 × LEDs (Green, Yellow, Red)
-- Resistors
-- Breadboard
-- Jumper wires
+##### A. System Overview  
+*Primary Components:*  
+| Component | Arduino Pin | Function |
+|------------|--------------|----------|
+| Photoresistor (LDR) | A0 | Measures ambient light intensity |
+| Green LED | D8 | Indicates low light level |
+| Yellow LED | D9 | Indicates medium light level |
+| Red LED | D10 | Indicates high light intensity |
 
-🔌 Pin Configuration
+The system continuously *reads light intensity values* in real time, processes the data, and activates the corresponding LED to provide intuitive *visual feedback* of environmental illumination.  
 
-Component	and Arduino Pin
-🌞 Photoresistor	A0
-🟢 Green LED	11
-🟡 Yellow LED	12
-🔴 Red LED	13
+***
 
-⚙️ Implementation Details
+##### B. Modes of Operation  
 
-The system continuously reads ambient light values, processes them through threshold logic, and updates the LED output accordingly.
+*Manual Mode:*  
+- The user defines custom *low* and *high* light thresholds via Serial Monitor commands.  
+- LED activation is determined according to these manually set parameters.  
 
-📟 Serial Monitor Output
-- Every 1 second, the system displays real-time data:
-- Light Intensity: xx%
-- Active LED: Green / Yellow / Red
-- Current Mode: Manual / Automatic
-- Environment: Cloudy / Normal / Bright Sunlight (Automatic Mode only)
+*Automatic Mode:*  
+- The system automatically adjusts brightness thresholds according to preset environmental profiles.  
 
-This continuous feedback ensures transparency and ease of monitoring.
+| Environment | Low Threshold (%) | High Threshold (%) |
+|--------------|------------------|-------------------|
+| Cloudy | 0–40 | — |
+| Normal | 41–70 | — |
+| Bright Sunlight | 71–100 | — |
 
-🧩 Key Concepts Demonstrated
-- Analog input reading using analogRead()
-- LED control using digitalWrite()
-- Threshold-based conditional logic
-- Mode switching via Serial commands
-- Dynamic environmental simulation
-- Real-time system monitoring and data display
+This flexibility demonstrates context-driven behavior replicating real-world adaptive lighting systems.  
+
+***
+
+##### C. Serial Monitor Commands  
+
+| Command | Description |
+|----------|-------------|
+| MODE AUTO | Switches the system to automatic mode. |
+| MODE MANUAL | Switches the system to manual mode. |
+| SET LOW xx | Sets the lower threshold (in %) for manual mode. |
+| SET HIGH xx | Sets the upper threshold (in %) for manual mode. |
+| Invalid Commands | System responds with Error: Wrong command. |
+
+These commands are processed through the Serial Monitor, allowing dynamic system tuning during runtime.  
+
+***
+
+##### D. Runtime Behavior  
+- The system outputs updates *every one second* to the Serial Monitor, including:  
+  - *Current light intensity (%)*  
+  - *Operating mode:* Manual or Automatic  
+  - *Active LED indicator (Green, Yellow, or Red)*  
+  - In *Automatic Mode*, the detected environment (*Cloudy*, *Normal*, or *Bright*)  
+
+This feedback mechanism provides transparent system monitoring and reinforces the concept of *data-driven decision-making* in embedded systems.  
+
+***
+
+#### V. Circuit Diagram and Wiring  
+
+*Components:*  
+- Arduino Uno  
+- Photoresistor (LDR) in voltage divider configuration  
+- 3 LEDs (Green, Yellow, Red)  
+- 3 × 220Ω resistors  
+- Breadboard and jumper wires  
+
+*Wiring Configuration:*  
+| Component | Arduino Pin | Connection Details |
+|------------|--------------|--------------------|
+| LDR | A0 | Analog input (voltage divider) |
+| Green LED | D8 | Through 220Ω resistor to GND |
+| Yellow LED | D9 | Through 220Ω resistor to GND |
+| Red LED | D10 | Through 220Ω resistor to GND |
+| Power Supply | 5V USB | Provides power and Serial link to PC |
+
+The entire system is powered through the USB connection, which also enables *Serial communication* with the Arduino IDE for command-based interaction and monitoring.  
+
+***
