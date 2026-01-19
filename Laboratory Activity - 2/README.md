@@ -1,36 +1,59 @@
-🌈 Laboratory Activity 2: Working with Analog Signals
+### Laboratory Activity No. 2  
+*Title:* Working with Analog Signals  
 
-🧠 Overview
-Laboratory Activity 2 builds upon the digital running light experiment by introducing analog signal control. Rather than limiting LEDs to simple ON and OFF states, this activity leverages Pulse Width Modulation (PWM) to smoothly control LED brightness.
+***
 
-By gradually fading LEDs in and out, the Arduino simulates analog behavior using digital signals—demonstrating how microcontrollers handle real-world variations such as light intensity, speed, and voltage levels. The result is a visually fluid running light effect that highlights the power and flexibility of PWM-based control.
+#### I. Description  
+This laboratory activity explores the concept of *analog signals* and their practical application in an *Arduino-based circuit*. It builds upon Laboratory Activity No. 1 by extending digital signal control to *analog output modulation*, specifically varying LED brightness. The experiment applies *Pulse Width Modulation (PWM)* to demonstrate how analog values can represent signal intensities. Through this, students gain a foundational understanding of *analog-to-digital interfacing* and its importance in IoT systems that require fine control of hardware components.  
 
-🎯 Objectives
-- Understand the concept of analog signals and how they are represented in Arduino
-- Learn how to adjust LED brightness using PWM and the analogWrite() function
+***
 
-🧰 Hardware Used
-- Arduino Uno
-- 5 LEDs
-- Resistors
-- Breadboard
-- Jumper wires
+#### II. Objectives  
+1. To discuss analog signals and their implementation in Arduino circuits.  
+2. To understand the principles of analog-to-digital signal conversion and scaling.  
 
-⚙️ Implementation Details
-This experiment enhances efficiency and readability by organizing LED control through arrays and loop-based logic.
+***
 
-🔌 Circuit Configuration
-Five LEDs are connected to Arduino digital pins 8 to 12
-Each LED is paired with a resistor to limit current
-All components are assembled on a breadboard for clean wiring
+#### III. Concepts Applied  
+- *Analog Signal Representation:* Continuous signal levels corresponding to varying voltage.  
+- *Pulse Width Modulation (PWM):* Achieved using analogWrite() to control analog output levels.  
+- *Array Utilization:* Arrays (int ledPins[5] = {8, 9, 10, 11, 12}) enable structured and efficient LED pin management.  
+- *Iterative Control:* Implemented through while() loops for sequential brightness control.  
+- *Sequential Logic Execution:* Ensures smooth transition of brightness across LEDs.  
+- *Timing Control:* Managed using delay() to regulate brightness change timing.  
 
-🧠 Program Logic
-LED pin numbers are stored in an array for simplified control
-A loop is used to configure pin modes and manage LED sequencing
+***
 
-Each LED:
-- Gradually increases brightness from 0 to 255 using analogWrite()
-- Reaches maximum brightness
-- Slowly dims back down to 0
+#### IV. System Behavior  
+- *Pins Used:* Digital Pins 8, 9, 10, 11, and 12  
+- *Control Method:* LED pin numbers are stored in an array for streamlined looping.  
+- *Sequence Operation:*  
+  - The program *gradually increases* LED brightness sequentially from Pin 12 → Pin 8 until the maximum analog value is reached.  
+  - Once all LEDs are fully illuminated, the brightness *gradually decreases* from Pin 12 → Pin 8 back to zero.  
+- *Visual Effect:*  
+  The LEDs produce a smooth, flowing light pattern with varying brightness levels, demonstrating the continuous nature of analog output control.  
+- *Control Logic:*  
+  Arrays and iterative loops simplify LED sequencing, ensuring uniform brightness transition and efficient signal modulation.  
 
-A brief delay is applied between LED transitions to ensure smooth and observable fading
+***
+
+#### V. Circuit Diagram and Wiring  
+*Components:*  
+- Arduino Uno  
+- 5 LEDs  
+- 5 × 220Ω resistors  
+- Breadboard and connecting wires  
+
+*Connection Setup:*  
+| Pin | Wire Color | LED | Connection |
+|-----|-------------|-----|-------------|
+| 8 | Orange | LED 1 | Through 220Ω resistor to GND |
+| 9 | Yellow | LED 2 | Through 220Ω resistor to GND |
+| 10 | Green | LED 3 | Through 220Ω resistor to GND |
+| 11 | Blue | LED 4 | Through 220Ω resistor to GND |
+| 12 | Red | LED 5 | Through 220Ω resistor to GND |
+
+*PWM Control:*  
+Brightness levels are regulated through analogWrite(), allowing smooth transitions rather than simple ON/OFF toggles as in the previous digital signal experiment.  
+
+***
